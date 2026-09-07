@@ -1,7 +1,9 @@
 import { cargarCatalogo } from './catalogo.js';
 import { pedirOpcion, pedirTexto } from './entrada.js';
 import { disponiblesDe, estadoDe, multaDe, prestar, type Mostrador } from './dominio/prestamos.js';
-import { LibroNoEncontradoError, SinEjemplaresError, type EstadoPrestamo } from './dominio/tipos.js';
+import { LibroNoEncontradoError, SinEjemplaresError } from './dominio/tipos.js';
+//Añadir ", type EstadoPrestamo" despues de SinEjemplaresError para probar el codigo de typecheck fallido
+
 
 //Pruebas para las comprobaciones de typecheck fallidos
 //const pruebaEstado: EstadoPrestamo = 'ACTIVO'; //Debe fallar
