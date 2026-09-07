@@ -6,6 +6,8 @@ export interface Libro {
     ejemplares: number
 }
 
+
+//valor 'perdido' añadido para pruebas solamente
 export type EstadoPrestamo = 'activo' | 'devuelto' | 'vencido';
 
 export interface Prestamo {
