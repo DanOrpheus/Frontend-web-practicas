@@ -50,19 +50,22 @@ export function estadoDe(p: Prestamo, hoy: Date): EstadoPrestamo {
   return hoy > p.venceEn ? 'vencido' : 'activo';
 }
 
+ //Extraje la funcion de dias de retraso en caso de que se pueda utilizar en otro lugar, y para que la funcion multaDe sea más limpia.
+export function diasDeRetraso(p: Prestamo, hoy: Date): number {
+    const referencia = p.devueltoEn ?? hoy;   
+    return Math.max(0, Math.ceil((referencia.getTime() - p.venceEn.getTime()) / UN_DIA));
+}
+
 export function multaDe(p: Prestamo, estado: EstadoPrestamo, hoy: Date): number {
-    const referencia = p.devueltoEn ?? hoy;
-
-    const dias = Math.max(0, Math.ceil((referencia.getTime() - p.venceEn.getTime()) / UN_DIA));
-
     switch (estado) {
         case 'activo':
             return 0;
         case 'vencido': 
         case 'devuelto':
-            return dias * MULTA_POR_DIA;
-        default:
+            return diasDeRetraso(p, hoy) * MULTA_POR_DIA;
+        default: {
             const _exhaustivo: never = estado;
             return _exhaustivo;
+        }
     }
 }

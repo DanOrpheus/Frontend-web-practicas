@@ -1,7 +1,13 @@
 import { cargarCatalogo } from './catalogo.js';
 import { pedirOpcion, pedirTexto } from './entrada.js';
 import { disponiblesDe, estadoDe, multaDe, prestar, type Mostrador } from './dominio/prestamos.js';
-import { LibroNoEncontradoError, SinEjemplaresError } from './dominio/tipos.js';
+import { LibroNoEncontradoError, SinEjemplaresError, type EstadoPrestamo } from './dominio/tipos.js';
+
+//Pruebas para las comprobaciones de typecheck fallidos
+//const pruebaEstado: EstadoPrestamo = 'ACTIVO'; //Debe fallar
+//console.log(pruebaEstado);
+//------Fin de la prueba de comprobacion------
+
 
 const OPCIONES = [
     { valor: 'prestar', etiqueta: 'Prestar un libro' },
