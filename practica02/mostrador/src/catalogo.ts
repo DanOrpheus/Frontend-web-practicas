@@ -27,7 +27,12 @@ export interface CatalogoCargado {
 export function cargarCatalogo(ruta: string): CatalogoCargado {
     const texto = readFileSync(ruta, 'utf-8');
 
+    //Comentar si se quiere probar con "any" en lugar de "unknown", fuera de eso dejar tal como está!!!
     const crudo: unknown = JSON.parse(texto);
+
+    //Prueba en la que se usa any en lugar de unknown
+    //const crudo: any = JSON.parse(texto); //Solo para pruebas de la seccion 3, no final!!!
+    //console.log(crudo.estoNoExiste.tampocoExiste); //Pruebas de la seccion 3
 
     if (typeof crudo !== 'object' || crudo === null) {
         throw new Error('El archivo no contiene un JSON válido');
