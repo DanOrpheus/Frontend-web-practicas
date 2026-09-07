@@ -5,6 +5,7 @@
     "moduleResolution": "NodeNext",
     "outDir": "dist",
     "rootDir": "src",
+    // Strict default = true, cambiado a false para una prueba de evidencia
     "strict": true,
 
     "noUnusedLocals": true,

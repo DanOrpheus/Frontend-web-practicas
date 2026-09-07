@@ -1,9 +1,9 @@
 import { type EstadoPrestamo, type Libro, type Prestamo, LibroNoEncontradoError, SinEjemplaresError } from './tipos.js';
 
-//cambiado a -5 solo para testing de préstamos vencidos
-export const DIAS_DE_PRESTAMO = -5;
+//cambiado a -5 solo para testing de préstamos vencidos, valor default = 14
+export const DIAS_DE_PRESTAMO = 14;
 
-export const MULTA_POR_DIA = "cinco"; //cambiado a "cinco" solo para la prueba de préstamo vencido
+export const MULTA_POR_DIA = 5; //cambiado a "cinco" solo para la prueba de préstamo vencido, valor default = 5
 
 const UN_DIA = 86_400_000; // Milisegundos en un día
 
