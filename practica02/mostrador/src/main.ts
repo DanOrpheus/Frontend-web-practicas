@@ -70,7 +70,7 @@ async function hacerPrestamo(m: Mostrador, hoy: Date): Promise<void> {
 async function main(): Promise<void> {
     const { libros, descartados } = cargarCatalogo('datos/catalogo.json');
 
-    console.log( '\n ---- MOSTRADOR DE LABIBLIIOTECA ----');
+    console.log( '\n ---- MOSTRADOR DE LA BIBLIIOTECA ----');
     console.log(`Se cargaron ${libros.length} libros del catálogo.\n`); 
 
     if (descartados > 0) {
