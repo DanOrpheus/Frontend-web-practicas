@@ -1,0 +1,25 @@
+### Clase para pruebas con REST Client
+
+### Ver todas las clases
+GET http://localhost:3000/clases
+
+###---------Prueba de agregar una clase nueva---------
+
+### Crear una clase nueva
+POST http://localhost:3000/clases
+Content-Type: application/json
+
+{
+  "nombre": "Crossfit"
+}
+
+### Ver todas las clases otra vez para confirmar que se agregó la nueva clase
+GET http://localhost:3000/clases
+
+###---------Prueba de enviar un cuerpo vacio---------
+
+### Crear una clase con el body vacío
+POST http://localhost:3000/clases
+Content-Type: application/json
+
+{}
