@@ -1,0 +1,50 @@
+### 1. Listar inscripciones (debería estar vacío al inicio)
+GET http://localhost:3000/inscripciones
+
+### 2. Inscribir a miembro 1 en el horario 1 -> debería dar 201
+POST http://localhost:3000/inscripciones
+Content-Type: application/json
+
+{
+  "horarioId": 1,
+  "miembroId": 1
+}
+
+### 3. Inscribir a miembro 2 en el horario 1 -> debería dar 201 (cupo lleno ahora: 2/2)
+POST http://localhost:3000/inscripciones
+Content-Type: application/json
+
+{
+  "horarioId": 1,
+  "miembroId": 2
+}
+
+### 4. Inscribir a miembro 3 en el horario 1 -> debería dar 409 (CUPO LLENO)
+POST http://localhost:3000/inscripciones
+Content-Type: application/json
+
+{
+  "horarioId": 1,
+  "miembroId": 3
+}
+
+### 5. Volver a inscribir a miembro 1 en el horario 1 -> debería dar 409 (DUPLICADA)
+POST http://localhost:3000/inscripciones
+Content-Type: application/json
+
+{
+  "horarioId": 1,
+  "miembroId": 1
+}
+
+### 6. Cancelar la inscripción de miembro 1
+DELETE http://localhost:3000/inscripciones/1
+
+### 7. Repetir la inscripción de miembro 3
+POST http://localhost:3000/inscripciones
+Content-Type: application/json
+
+{
+  "horarioId": 1,
+  "miembroId": 3
+}
