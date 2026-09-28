@@ -1,0 +1,26 @@
+### M1. Listar miembros -> 200, los 3 miembros
+GET http://localhost:3000/miembros
+
+### M2. Buscar el miembro 1 -> 200, Karla
+GET http://localhost:3000/miembros/1
+
+### M3. Crear un miembro -> 201, con id 4
+POST http://localhost:3000/miembros
+Content-Type: application/json
+
+{
+  "nombre": "Diego Salas",
+  "correo": "diego@itson.mx",
+  "membresia": "plus"
+}
+
+### M4. Actualizar el miembro 4 -> 200, con la membresía cambiada
+PATCH http://localhost:3000/miembros/4
+Content-Type: application/json
+
+{
+  "membresia": "premium"
+}
+
+### M5. Eliminar el miembro 4 -> 204, sin contenido
+DELETE http://localhost:3000/miembros/4

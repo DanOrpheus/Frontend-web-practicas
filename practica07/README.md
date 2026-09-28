@@ -17,4 +17,4 @@ Hecho por **Daniel Gutiérrez Flores - _00000132987_**
 > Porque __'MiembrosService'__ es una clase, y las clases sí existen al compilar a JavaScript, así que Nest la usa a ella misma como identificador para saber qué inyectar en el Controller. __'MiembroRepository'__, en cambio, es una interfaz, y las interfaces desaparecen al compilar, por lo que Nest no tendría nada con qué identificarla. Por eso el repositorio necesita un token (__MIEMBRO_REPOSITORY__) con __@Inject__, y en el módulo se le indica qué clase concreta usar
 
 ### 5. ¿Qué prueba, en los hechos, que agregar Miembros no rompió nada de Inscripciones?
-> 
+> Lo prueba que las mismas peticiones de Inscripciones de la práctica 6 siguen respondiendo exactamente igual con Miembros ya agregado: los 201 al inscribir, los dos 409 (cupo lleno y duplicada), y la cancelación seguida de una nueva inscripción exitosa. Cada módulo tiene su propio repositorio, su propio token y sus propios providers, así que no comparten estado ni dependencias.
