@@ -20,6 +20,7 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,                // ...y deja este apagado a propósito: más permisivo para empezar
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "useDefineForClassFields": false,
   }
 }

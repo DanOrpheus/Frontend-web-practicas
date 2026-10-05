@@ -1,0 +1,28 @@
+### Tipo equivocado: cupoMaximo como texto
+POST http://localhost:3000/horarios
+Content-Type: application/json
+
+{
+  "claseId": 1,
+  "dia": "jueves",
+  "horaInicio": "08:00",
+  "cupoMaximo": "no-es-un-numero",
+  "entrenador": "Luis Fierro"
+}
+
+### Campo que no existe en el DTO
+POST http://localhost:3000/clases
+Content-Type: application/json
+
+{
+  "nombre": "Boxeo",
+  "campoInventado": "esto no debería pasar"
+}
+
+### Origen permitido
+GET http://localhost:3000/clases
+Origin: http://localhost:5173
+
+### Origen NO permitido
+GET http://localhost:3000/clases
+Origin: http://localhost:3001

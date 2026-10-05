@@ -1,4 +1,9 @@
-export interface CrearInscripcionDto {
-  horarioId: number;
-  miembroId: number;
+import { IsInt } from 'class-validator';
+
+export class CrearInscripcionDto {
+  @IsInt()
+  horarioId!: number;
+
+  @IsInt()
+  miembroId!: number;
 }
