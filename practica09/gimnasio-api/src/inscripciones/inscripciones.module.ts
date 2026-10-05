@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { InscripcionesController } from './inscripciones.controller';
 import { InscripcionesService } from './inscripciones.service';
-import { InscripcionMemoriaRepository } from './infra/inscripcion-memoria.repository';
 import { INSCRIPCION_REPOSITORY } from './inscripciones.tokens';
+import { InscripcionPrismaRepository } from './infra/inscripcion-prisma.repository';
 
 @Module({
   controllers: [InscripcionesController],
@@ -10,9 +10,9 @@ import { INSCRIPCION_REPOSITORY } from './inscripciones.tokens';
     InscripcionesService,
     {
       provide: INSCRIPCION_REPOSITORY,
-      useClass: InscripcionMemoriaRepository,
+      useClass: InscripcionPrismaRepository,
       //         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      // Practica 8 (Prisma): esta linea pasa a InscripcionPrismaRepository.
+      // Practica 9 (Blindar la API): esta linea pasa de InscripcionMemoriaRepository a InscripcionPrismaRepository.
       // Ni el Service ni el Controller se enteran.
     },
   ],

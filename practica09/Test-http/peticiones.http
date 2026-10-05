@@ -1,0 +1,71 @@
+### 01 - Crear una clase de Prueba para ver en la BD Gimnasio
+POST http://localhost:3000/clases
+Content-Type: application/json
+
+{
+  "nombre": "Yoga",
+  "descripcion": "Clase de yoga para principiantes"
+}
+
+### 02 - Listar las clases disponibles
+GET http://localhost:3000/clases
+
+### 03 - Crear una clase de prueba mas para uso en las pruebas de la práctica 6 y 7
+POST http://localhost:3000/clases
+Content-Type: application/json
+
+{
+  "nombre": "Pilates",
+  "descripcion": "Clase de Pilates Avanzada"
+}
+
+### 04 - Crear una clase de prueba mas para uso en las pruebas de la práctica 6 y 7
+POST http://localhost:3000/clases
+Content-Type: application/json
+
+{
+  "nombre": "Spinning",
+  "descripcion": "Clase de Spinning para todos los niveles"
+}
+
+### 05 - Crear horarios para las clases de prueba
+POST http://localhost:3000/horarios
+Content-Type: application/json
+
+{
+    "claseId": 1,
+    "dia": "Lunes",
+    "horaInicio": "07:00",
+    "cupoMaximo": 2,
+    "entrenador": "Ana Robles"
+}
+
+### 06 - Crear Miembro 1
+POST http://localhost:3000/miembros
+Content-Type: application/json
+
+{
+    "nombre": "Omar Valdez",
+    "correo": "omar@itson.mx",
+    "membresia": "plus"
+}
+
+### 07 - Crear Miembro 2
+POST http://localhost:3000/miembros
+Content-Type: application/json
+
+{
+  "nombre": "Karla Duarte",
+  "correo": "karla@itson.mx",
+  "membresia": "premium"
+}
+
+### 08 - Crear Miembro 3
+POST http://localhost:3000/miembros
+Content-Type: application/json
+
+{
+  "nombre": "Sofia Ibarra",
+  "correo": "sofia@itson.mx",
+  "membresia": "basica"
+}
