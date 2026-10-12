@@ -12,6 +12,7 @@ import {
 import { ClasesService } from './clases.service';
 import { CrearClaseDto } from './dto/crear-clase.dto';
 import type { ActualizarClaseDto } from './dto/actualizar-clase.dto';
+import { Publico } from '../auth/decoradores/publico.decorator';
 
 @Controller('clases')
 export class ClasesController {
@@ -19,12 +20,14 @@ export class ClasesController {
 
   /** GET /clases */
   @Get()
+  @Publico()
   listar() {
     return this.clasesService.listar();
   }
 
   /** GET /clases/2 */
   @Get(':id')
+  @Publico()
   async buscar(@Param('id') id: string) {
     const clase = await this.clasesService.buscar(Number(id));
     if (!clase) {

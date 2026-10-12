@@ -12,7 +12,9 @@ import {
 import { HorariosService } from './horarios.service';
 import { CrearHorarioDto } from './dto/crear-horario.dto';
 import type { ActualizarHorarioDto } from './dto/actualizar-horario.dto';
+import { Publico } from 'src/auth/decoradores/publico.decorator';
 
+@Publico()
 @Controller('horarios')
 export class HorariosController {
   constructor(private readonly horariosService: HorariosService) {}
