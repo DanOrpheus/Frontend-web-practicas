@@ -1,25 +1,33 @@
 import { useState } from 'react';
-import { productos, type Producto } from './datos.ts';
+import type { Producto } from './datos.ts';
+import { useProductos } from './useProductos.ts';
 import { Layout } from './Layout.tsx';
 import { Encabezado } from './Encabezado.tsx';
 import { PiePagina } from './PiePagina.tsx';
 import { Filtros } from './Filtros.tsx';
 import { Catalogo } from './Catalogo.tsx';
+import { Cargando } from './Cargando.tsx';
+import { ErrorCarga } from './ErrorCarga.tsx';
+import { FormularioPago } from './FormularioPago.tsx';
 
 const CATEGORIAS = ['todas', 'calzado', 'ropa', 'accesorios'];
 
 export default function App() {
-  // Estado: SOLO lo que cambia por una acción del usuario.
+  const { productos, cargando, error, reintentar } = useProductos();
   const [filtro, setFiltro] = useState('todas');
   const [carrito, setCarrito] = useState<Producto[]>([]);
 
-  // Derivado: se calcula en cada pintada, no se guarda en el estado.
   const visibles =
     filtro === 'todas' ? productos : productos.filter((p) => p.categoria === filtro);
   const total = carrito.reduce((suma, p) => suma + p.precio, 0);
 
   function agregar(producto: Producto) {
-    carrito.push(producto);
+    setCarrito([...carrito, producto]); // copia nueva, no push
+  }
+
+  function alPagar() {
+    setCarrito([]);   // vaciar el carrito
+    reintentar();     // volver a pedir productos: existencia actualizada
   }
 
   return (
@@ -33,7 +41,16 @@ export default function App() {
       </section>
 
       <Filtros categorias={CATEGORIAS} activa={filtro} onCambiar={setFiltro} />
-      <Catalogo productos={visibles} onAgregar={agregar} />
+
+      {cargando ? (
+        <Cargando />
+      ) : error ? (
+        <ErrorCarga mensaje={error} onReintentar={reintentar} />
+      ) : (
+        <Catalogo productos={visibles} onAgregar={agregar} />
+      )}
+
+      <FormularioPago carrito={carrito} onPagado={alPagar} />
     </Layout>
   );
 }
